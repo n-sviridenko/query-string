@@ -280,10 +280,7 @@ function parse(query, options) {
 	}, Object.create(null));
 }
 
-exports.extract = extract;
-exports.parse = parse;
-
-exports.stringify = (object, options) => {
+const stringify = (object, options) => {
 	if (!object) {
 		return '';
 	}
@@ -339,7 +336,7 @@ exports.stringify = (object, options) => {
 	}).filter(x => x.length > 0).join('&');
 };
 
-exports.parseUrl = (url, options) => {
+const parseUrl = (url, options) => {
 	options = Object.assign({
 		decode: true
 	}, options);
@@ -355,7 +352,7 @@ exports.parseUrl = (url, options) => {
 	);
 };
 
-exports.stringifyUrl = (object, options) => {
+const stringifyUrl = (object, options) => {
 	options = Object.assign({
 		encode: true,
 		strict: true
@@ -377,4 +374,12 @@ exports.stringifyUrl = (object, options) => {
 	}
 
 	return `${url}${queryString}${hash}`;
+};
+
+export {
+	extract,
+	parse,
+	parseUrl,
+	stringify,
+	stringifyUrl,
 };
